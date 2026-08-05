@@ -4,4 +4,5 @@ __pycache__/
 venv/
 data/
 *.pt
-*.png
+*.png.DS_Store
+asl_alphabet_train/
