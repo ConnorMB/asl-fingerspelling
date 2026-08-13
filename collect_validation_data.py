@@ -49,15 +49,15 @@ def main():
             for hand_landmarks in results.multi_hand_landmarks:
                 mp_drawing.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
 
-        cv2.putText(frame, "press a-z = record letter  q = quit", (10, 20),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
+        cv2.putText(frame, "press a-z = record letter  esc = quit", (10, 20),
+            cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
         cv2.putText(frame, f"samples this session: {sum(counts.values())}", (10, 50),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
 
         cv2.imshow("Collect ASL Validation Data", frame)
         key = cv2.waitKey(1) & 0xFF
 
-        if key == ord("q"):
+        if key == 27:
             break
         elif chr(key).isalpha() and chr(key).upper() in LETTERS and results.multi_hand_landmarks:
             letter = chr(key).upper()
