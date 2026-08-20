@@ -42,19 +42,22 @@ def main():
             break
 
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        
         results = hands.process(rgb_frame)
-        frame = cv2.flip(frame, 1)
+        
 
         if results.multi_hand_landmarks:
             for hand_landmarks in results.multi_hand_landmarks:
                 mp_drawing.draw_landmarks(frame, hand_landmarks, mp_hands.HAND_CONNECTIONS)
+
+        frame = cv2.flip(frame, 1)
 
         cv2.putText(frame, "press a-z = record letter  esc = quit", (10, 20),
             cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 255), 2)
         cv2.putText(frame, f"samples this session: {sum(counts.values())}", (10, 50),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 255, 0), 2)
 
-        cv2.imshow("Collect ASL Validation Data", frame)
+        cv2.imshow("Collect asl validation data", frame)
         key = cv2.waitKey(1) & 0xFF
 
         if key == 27:

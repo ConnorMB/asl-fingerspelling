@@ -5,4 +5,5 @@ venv/
 data/
 *.pt
 *.png.DS_Store
+*.DS_Store
 asl_alphabet_train/
